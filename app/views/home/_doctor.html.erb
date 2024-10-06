@@ -1,0 +1,31 @@
+
+<div class="d-flex">
+	<div class="d-flex flex-column justify-content-center align-items-center w-100 h-100 flex-wrap">
+		<div class="" >
+			<h3 style="font-size:18px">
+				Doctor Dashboard – Stay Organized with Real-Time Appointments
+			</h3>
+			<p style="font-size:14px">
+				Welcome to the Doctor Dashboard, where managing your appointments has never been easier. With Doc App, you can instantly view the number of appointments for the day, ensuring you’re always prepared. Whether you're checking your schedule or updating your availability, everything is just a click away.
+			</p>
+			<p style="font-size:14px">
+				Sign in to start your day and access real-time updates on patient appointments. Once you’re done, simply sign out to wrap up. Doc App is designed to help you stay focused, organized, and in control of your daily workflow.
+			</p>
+			<p style="font-size:14px">
+				Get started with the Doctor Dashboard and streamline your appointment management today!
+			</p>
+			<%= link_to "View all patients", patients_path, class: "btn btn-secondary" %>
+		</div>
+		<img src="https://img.freepik.com/free-vector/health-professional-team_23-2148479239.jpg?uid=R136712360&ga=GA1.2.1914382452.1716092979&semt=ais_hybrid" style="width:400px">
+	</div>
+	<div class="d-flex flex-column gap-2 justify-content-center align-items-center w-100 h-100" >
+		<h3 style="font-size:24px" >Daily patient matrix:</h3>
+		<div class="w-75">
+			<%= line_chart Patient.group_by_day(:slot).count(:slot) %>
+		</div>
+	</div>
+</div>
+
+
+
+

@@ -1,0 +1,54 @@
+
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <div class="w-50" >
+    <h2 class="fw-bolder text-center">Sign up</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :first_name, class: "fw-semibold" %><br />
+        <%= f.text_field :first_name, autofocus: true, class: "mt-2 mb-3 form-control", placeholder: "First Name" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :last_name, class: "fw-semibold" %><br />
+        <%= f.text_field :last_name, autofocus: true, class: "mt-2 mb-3 form-control", placeholder: "Last name" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :username, class: "fw-semibold" %><br />
+        <%= f.text_field :username, autofocus: true, class: "mt-2 mb-3 form-control", placeholder: "Username" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :Select_your_role, class: "fw-semibold" %><br />
+        <%= f.select :role, options_for_select(%w[doctor receptionist]), { autofocus: true }, { class: "mt-2 mb-3 form-select" } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email, class: "fw-semibold" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-2 form-control", placeholder: "Email" %>
+      </div>
+
+      <div class="field mt-3">
+        <%= f.label :password, class: "fw-semibold" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control mt-2", placeholder:"Password" %>
+      </div>
+
+      <div class="field mt-3">
+        <%= f.label :password_confirmation, class: "fw-semibold" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Rewrite password", class: "form-control mt-2" %>
+      </div>
+
+      <div class="actions mt-3 d-flex gap-3 mb-5">
+        <%= f.submit "Sign up", class:"btn btn-secondary" %>
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>  
+  </div>
+</div>
+

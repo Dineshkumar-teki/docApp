@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+  <div class="container-fluid">
+  	<%= link_to 'Doc Checks', root_path, class:"navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        	<%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        	<%= link_to "About", home_about_path, class: "nav-link" %>
+        </li>
+
+        <% if user_auth_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Patients", patients_path, class: "nav-link" %>
+          </li>
+        <% if current_user_auth.role != "doctor" %>
+          <li class="nav-item">
+            <%= link_to "Add patient", new_patient_path, class: "nav-link" %>
+          </li>
+        <% end %>
+          <li class="nav-item">
+            <%= link_to "Sign Out", destroy_user_auth_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Edit Profile", edit_user_auth_registration_path, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_auth_registration_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Sign in", new_user_auth_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+
+      </ul>
+      <% if user_auth_signed_in? %>
+        <%= current_user_auth.first_name + " " + current_user_auth.last_name %>
+      <% end %>
+    </div>
+  </div>
+</nav>

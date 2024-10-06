@@ -1,0 +1,28 @@
+<% if current_user_auth %>
+	<% if current_user_auth.role == "doctor" %>
+		<%= render "home/doctor" %>
+	<% else %>
+		<%= render "home/receptionist" %>
+	<% end %>
+<% else %>
+	<div class="w-100 h-100 d-flex justify-content-center align-items-center flex-wrap gap-3">
+		<div class="" style="width:45%">
+			<h5>
+				Welcome to Doc App – Simplifying Patient & Appointment Management
+			</h5>
+			<p class="" style="font-size:13px">
+				At Doc App, we streamline patient and appointment management for healthcare facilities. Receptionists can easily add patient details, and doctors can view the number of appointments in real time. Whether you're managing patient records or staying on top of your daily schedule, Doc App offers a hassle-free, digital solution.
+			</p>
+			<p style="font-size:13px">
+				Empower your practice with real-time insights. Doctors can effortlessly view their appointment counts, ensuring they stay organized and prepared for their day. With a simple sign-in and sign-out feature, managing your schedule has never been easier.
+			</p>
+			<div class="d-flex gap-3">
+				<%= link_to "Sign up", new_user_auth_registration_path, class: "btn btn-success" %>
+				<%= link_to "Sign in", new_user_auth_session_path, class: "btn btn-primary" %>
+			</div>
+		
+		</div>
+
+		<img src="https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?uid=R136712360&ga=GA1.2.1914382452.1716092979&semt=ais_hybrid" class="" style="width:450px">
+	</div>
+<% end %>
